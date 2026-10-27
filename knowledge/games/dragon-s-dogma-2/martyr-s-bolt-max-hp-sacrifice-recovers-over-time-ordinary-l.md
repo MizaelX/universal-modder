@@ -20,6 +20,8 @@ humans:
 date: '2026-10-22'
 links:
 - https://github.com/MizaelX/DD2-Martyr-s-Bolt-Recovery
+- https://github.com/praydog/REFramework
+- https://github.com/D3athAn63l/DD2_Stuff/tree/main/research/baselines/health/2026-10-11
 tags:
 - skills
 - health
@@ -42,9 +44,9 @@ tags:
   `REFramework.zip` for every RE Engine game; extract **only** `dinput8.dll` into the game folder. It was the
   only build newer than the 2026-10-16 game update at the time.
 - No other mods. Saves were backed up first (`Steam\userdata\<id>\2054970`).
-- Starting point for the health API: D3athAn63l's live snapshot
-  (https://github.com/D3athAn63l/DD2_Stuff, `research/baselines/health/2026-10-11`). Everything in it still
-  worked on this build.
+- Starting point for the health API: D3athAn63l's live snapshot, a read-only probe script and its capture
+  (https://github.com/D3athAn63l/DD2_Stuff/tree/main/research/baselines/health/2026-10-11). Everything in it
+  still worked on this build.
 
 ## Route and why
 `loader-api`: REFramework Lua with `sdk.hook`. Data edits can't do runtime HP accounting. The two candidate
@@ -143,8 +145,10 @@ code existed.
    log (menu buttons), or you'll misread them.
 8. **The probe's `MotionFsm2:getCurrentNodeName(0)` worked first time** and is far more readable than motion
    bank/ID pairs (`180/1300` charge start, `180/1305` loop, `180/1310` shot). Log both.
-9. **Windows tooling:** the toolkit's `um` launcher looks for `python3`, which python.org's installer doesn't
-   create, so it hits the Microsoft Store stub. Install `uv` (the launcher prefers it) or disable the alias.
+9. **Windows tooling:** without uv, the toolkit's bash launcher `bin/um` (what Git Bash runs) tries `python3`
+   first. python.org's classic `.exe` installer doesn't create that name (the newer Python install manager
+   does), so it hits the Microsoft Store stub. Install `uv` (both launchers prefer it) or disable the alias;
+   `bin/um.cmd` (cmd and PowerShell) calls `python` instead.
 
 ## Assets
 None.
